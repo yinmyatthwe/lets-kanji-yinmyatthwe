@@ -1,0 +1,31 @@
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h3>N5 Kanji List</h3>
+            <br>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Kanji</th>
+                        <th>Onyomi</th>
+                        <th>Kunyomi</th>
+                        <th>Meaning</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let kanji of kanjis">
+                        <td><a href=""></a>{{kanji.id}}</td>
+                        <td>{{kanji.kanji}}</td>
+                        <td>{{kanji.onyomi}}</td>
+                        <td>{{kanji.kunyomi}}</td>
+                        <td>{{kanji.meaning}}</td>
+
+                    </tr>
+                </tbody>
+            </table>
+            <button class="btn btn-primary" (click)="backClicked()">BACK</button>
+        </div>
+    </div>
+</div>
