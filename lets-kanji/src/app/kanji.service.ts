@@ -14,5 +14,7 @@ export class KanjiService {
     
     return kanjis;
   }
+
+  
 }
 
