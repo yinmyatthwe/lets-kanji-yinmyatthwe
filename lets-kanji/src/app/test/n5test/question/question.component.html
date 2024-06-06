@@ -1,0 +1,21 @@
+
+<h1 style="font-weight: bold; text-align: center;">N5 Kanji Test 1</h1>
+<div>
+<mat-card *ngFor="let question of questions">
+    <mat-card-header>
+    <mat-card-title style="font-size: x-large; font-weight: bold;">{{question.id}}.  {{question.question}}</mat-card-title>
+    </mat-card-header>
+    <mat-card-actions>
+    <button class="ans_btn" mat-button>{{question.ansa}}</button> &nbsp;&nbsp;
+    <button class="ans_btn" mat-button>{{question.ansb}}</button> &nbsp;&nbsp;
+    <button class="ans_btn" mat-button>{{question.ansc}}</button> &nbsp;&nbsp;
+    <button class="ans_btn" mat-button>{{question.ansd}}</button> &nbsp;&nbsp;
+    </mat-card-actions>
+    <br>
+</mat-card>
+<br><br>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<button class="btn btn-primary btn-lg" (click)="backClicked()" >BACK</button>&nbsp;&nbsp;
+<button class="btn btn-primary btn-lg" routerLink="/result">Submit Answer</button>
+
+</div>

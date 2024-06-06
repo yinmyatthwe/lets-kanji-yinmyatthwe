@@ -5,6 +5,8 @@ import { StudyComponent } from './study/study.component';
 import { TestComponent } from './test/test.component';
 import { N5kanjiComponent } from './study/n5kanji/n5kanji.component';
 import { N5testComponent } from './test/n5test/n5test.component';
+import { QuestionComponent } from './test/n5test/question/question.component';
+import { ResultComponent } from './test/result/result.component';
 import path from 'path';
 
 const routes: Routes = [
@@ -14,6 +16,10 @@ const routes: Routes = [
   {path:'test',component:TestComponent},
   {path:'n5kanji',component:N5kanjiComponent},
   {path:'n5test',component:N5testComponent},
+  {path:'n5test1',component:QuestionComponent},
+  {path:'result',component:ResultComponent},
+
+
 
 
   
