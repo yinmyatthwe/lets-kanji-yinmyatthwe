@@ -394,6 +394,85 @@ export interface ApiKanjiListKanjiList extends Schema.CollectionType {
   };
 }
 
+export interface ApiKanjiQuestionListKanjiQuestionList
+  extends Schema.CollectionType {
+  collectionName: 'kanji_question_lists';
+  info: {
+    singularName: 'kanji-question-list';
+    pluralName: 'kanji-question-lists';
+    displayName: 'Kanji_Question_list';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    question: Attribute.String;
+    answer: Attribute.String;
+    choice_1: Attribute.String;
+    choice_2: Attribute.String;
+    choice_3: Attribute.String;
+    choice_4: Attribute.String;
+    test_list: Attribute.Relation<
+      'api::kanji-question-list.kanji-question-list',
+      'manyToOne',
+      'api::test-list.test-list'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::kanji-question-list.kanji-question-list',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::kanji-question-list.kanji-question-list',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiTestListTestList extends Schema.CollectionType {
+  collectionName: 'test_lists';
+  info: {
+    singularName: 'test-list';
+    pluralName: 'test-lists';
+    displayName: 'test_list';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    kanji_question_lists: Attribute.Relation<
+      'api::test-list.test-list',
+      'oneToMany',
+      'api::kanji-question-list.kanji-question-list'
+    >;
+    level: Attribute.Integer;
+    name: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::test-list.test-list',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::test-list.test-list',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -831,6 +910,8 @@ declare module '@strapi/types' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'api::kanji-list.kanji-list': ApiKanjiListKanjiList;
+      'api::kanji-question-list.kanji-question-list': ApiKanjiQuestionListKanjiQuestionList;
+      'api::test-list.test-list': ApiTestListTestList;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;

@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "kanji_question_lists",
+  "info": {
+    "singularName": "kanji-question-list",
+    "pluralName": "kanji-question-lists",
+    "displayName": "Kanji_Question_list",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "question": {
+      "type": "string"
+    },
+    "answer": {
+      "type": "string"
+    },
+    "choice_1": {
+      "type": "string"
+    },
+    "choice_2": {
+      "type": "string"
+    },
+    "choice_3": {
+      "type": "string"
+    },
+    "choice_4": {
+      "type": "string"
+    },
+    "test_list": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::test-list.test-list",
+      "inversedBy": "kanji_question_lists"
+    }
+  }
+}

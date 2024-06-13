@@ -31,7 +31,7 @@ interface Response{
 export class N5kanjiComponent implements AfterViewInit,OnInit{
   //kanjis = N5KANJIS;
   error: any | undefined;
-  kanjis$: Observable<KanjiResponse[]> | undefined;
+  kanjis$: Observable<KanjiResponse[]>| undefined;
 
   constructor(private _location: Location,private kanjiService: KanjiService,
     private http: HttpClient) {}
@@ -41,26 +41,25 @@ export class N5kanjiComponent implements AfterViewInit,OnInit{
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
-      
-    ngOnInit(): void {
-      const url = "http://localhost:1337/api/kanji-lists";
-      const opts = { params: { populate: "*" } };
-  
-      this.kanjis$ = this.http.get<Response>(url,opts).pipe(
-        catchError((error) => this.handleError(error)),
-        map((response) => response.data.map((x) => x.attributes))
-      );
-      
-    }
-    displayedColumns: string[] = ['no', 'kanji', 'onyomi'];
-    dataSource = new MatTableDataSource <Element>();
 
-    private handleError(error: HttpErrorResponse): Observable<never> {
-      this.error = error;
-      return of();
-    }
-  //test
+  displayedColumns: string[] = ['no', 'kanji', 'onyomi'];
+  dataSource = new MatTableDataSource <KanjiResponse>();
+      
+  ngOnInit(): void {
+    //const url = "http://localhost:1337/api/kanji-lists";
+const url ="http://localhost:1337/api/test-lists";
+    const opts = { params: { populate: "*" } };
   
+    this.kanjis$=this.http.get<Response>(url,opts).pipe(
+      catchError((error) => this.handleError(error)),
+      map((response) => response.data.map((x) => x.attributes))
+    );
+      
+  }
+  private handleError(error: HttpErrorResponse): Observable<never> {
+    this.error = error;
+    return of();
+  }
   //detail
   selectedWord?: N5Kanji
   getWordDetails(n5Kanji: N5Kanji): void {
