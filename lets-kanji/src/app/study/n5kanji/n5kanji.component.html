@@ -2,7 +2,7 @@
 <div class="mat-elevation-z8" style="width: 100%;">
     <br><br>
     <h3 style="font-size: x-large; font-style: italic;">    N5 Kanji List</h3>
-    <table mat-table [dataSource]="dataSource">
+    <!-- <table mat-table [dataSource]="dataSource">
         <mat-row>
             <ng-container matColumnDef="no">
                 <th mat-header-cell *matHeaderCellDef> # </th>
@@ -34,11 +34,32 @@
     
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
+    </table> -->
     <br>
     <button class="btn btn-primary" (click)="backClicked()">BACK</button>
-    <mat-paginator [pageSizeOptions]="[5, 10]" showFirstLastButtons
+    <!-- mat pagination -->
+    <!-- <mat-paginator [pageSizeOptions]="[5, 10]" showFirstLastButtons
                 aria-label="Select page of periodic elements">
-    </mat-paginator>
+    </mat-paginator> -->
+    
+    <!-- boostrap table -->
+    <table class="table table-striped table-bordered" 
+    *ngIf="kanjis$|async as kanjis">
+        <thead>
+            <tr>
+                
+                <th>Kanji</th>
+                <th>Onyomi</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let kanji of kanjis">
+                <td>{{kanji.kanji}}</td>
+                <td>{{kanji.onyomi}}</td>
+                
+            </tr>
+        </tbody>
+        </table>
 </div> 
 <app-word-details [kanji]="selectedWord"></app-word-details>

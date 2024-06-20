@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "test_lists",
+  "info": {
+    "singularName": "test-list",
+    "pluralName": "test-lists",
+    "displayName": "test_list",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "kanji_question_lists": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::kanji-question-list.kanji-question-list",
+      "mappedBy": "test_list"
+    },
+    "level": {
+      "type": "integer"
+    },
+    "name": {
+      "type": "string"
+    }
+  }
+}

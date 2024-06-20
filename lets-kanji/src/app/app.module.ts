@@ -11,6 +11,7 @@ import { TestComponent } from './test/test.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MainComponent } from './main/main.component';
 import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 import { N5kanjiComponent } from './study/n5kanji/n5kanji.component';
 import { N5testComponent } from './test/n5test/n5test.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
@@ -45,7 +46,8 @@ import { WordDetailsComponent } from './study/word-details/word-details.componen
     MatCardModule,
     MatButtonModule,
     MatDividerModule,
-    MatListModule
+    MatListModule,
+    HttpClientModule
     
   ],
   providers: [
