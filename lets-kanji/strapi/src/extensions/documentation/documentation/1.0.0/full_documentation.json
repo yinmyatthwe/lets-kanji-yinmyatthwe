@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2024-06-13T09:56:06.783Z"
+    "x-generation-date": "2024-06-27T06:08:04.044Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -103,6 +103,15 @@
               },
               "kanji": {
                 "type": "string"
+              },
+              "level": {
+                "type": "string"
+              },
+              "meaning": {
+                "type": "string"
+              },
+              "kunyomi": {
+                "type": "string"
               }
             }
           }
@@ -164,6 +173,15 @@
             "type": "string"
           },
           "kanji": {
+            "type": "string"
+          },
+          "level": {
+            "type": "string"
+          },
+          "meaning": {
+            "type": "string"
+          },
+          "kunyomi": {
             "type": "string"
           },
           "createdAt": {

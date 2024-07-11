@@ -376,6 +376,9 @@ export interface ApiKanjiListKanjiList extends Schema.CollectionType {
   attributes: {
     onyomi: Attribute.String;
     kanji: Attribute.String & Attribute.Required & Attribute.Unique;
+    level: Attribute.String;
+    meaning: Attribute.String;
+    kunyomi: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

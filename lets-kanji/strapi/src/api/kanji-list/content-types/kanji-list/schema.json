@@ -19,6 +19,15 @@
       "type": "string",
       "required": true,
       "unique": true
+    },
+    "level": {
+      "type": "string"
+    },
+    "meaning": {
+      "type": "string"
+    },
+    "kunyomi": {
+      "type": "string"
     }
   }
 }

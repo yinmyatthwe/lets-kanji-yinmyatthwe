@@ -46,8 +46,8 @@ export class N5kanjiComponent implements AfterViewInit,OnInit{
   dataSource = new MatTableDataSource <KanjiResponse>();
       
   ngOnInit(): void {
-    //const url = "http://localhost:1337/api/kanji-lists";
-const url ="http://localhost:1337/api/test-lists";
+    const url = "http://localhost:1337/api/kanji-lists";
+  //const url ="http://localhost:1337/api/test-lists";
     const opts = { params: { populate: "*" } };
   
     this.kanjis$=this.http.get<Response>(url,opts).pipe(
