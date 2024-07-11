@@ -12,7 +12,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MainComponent } from './main/main.component';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { N5kanjiComponent } from './study/n5kanji/n5kanji.component';
 import { N5testComponent } from './test/n5test/n5test.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { QuestionComponent } from './test/n5test/question/question.component';
@@ -22,6 +21,7 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatListModule} from '@angular/material/list';
 import { ResultComponent } from './test/result/result.component';
 import { WordDetailsComponent } from './study/word-details/word-details.component';
+import { KanjiComponent } from './study/kanji/kanji.component';
 
 
 @NgModule({
@@ -30,11 +30,11 @@ import { WordDetailsComponent } from './study/word-details/word-details.componen
     StudyComponent,
     TestComponent,
     MainComponent,
-    N5kanjiComponent,
     N5testComponent,
     QuestionComponent,
     ResultComponent,
     WordDetailsComponent,
+    KanjiComponent,
   ],
   imports: [
     BrowserModule,

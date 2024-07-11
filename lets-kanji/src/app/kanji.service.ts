@@ -1,30 +1,34 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { N5Kanji } from './study/n5kanji/n5kanji';
-import { N5KANJIS } from './study/n5kanji/n5KanjiList';
 import { HttpClient,HttpErrorResponse } from '@angular/common/http';
-
-interface KanjiResponse{
-  id: number;
-  kanji: string;
+import { response } from 'express';
+import { map } from 'rxjs';
+export interface Kanji {
   onyomi: string;
-}
+  kanji: string;
+  level:string;
+  meaning:string;
+  kunyomi:string;
 
+}
 @Injectable({
   providedIn: 'root'
 })
 export class KanjiService {
   apiUrl="http://localhost:1337/api/kanji-lists";
+  //opts = { params: { populate: "*" } };
 
   constructor(private http:HttpClient) { }
-  getKanjis(): Observable<N5Kanji[]> {
-    const kanjis = of(N5KANJIS);
-    
-    return kanjis;
+  getKanjis(): Observable<any[]> {
+    return this.http.get<{ data: any[] }>(this.apiUrl).pipe(
+      map(response => response.data) // Extract the data array
+    );
   }
-  // getKanjis() {
-      
-  //     return this.http.get<KanjiResponse>(`${this.apiUrl}`)
-  // } 
+  // getKanjis(): Observable<any[]> {
+  //   return this.http.get<any[]>(this.apiUrl);
+  // }
+
 }
+
+
 
