@@ -1,6 +1,6 @@
 import { Component,Input} from '@angular/core';
 import { Location } from '@angular/common';
-import { N5Kanji } from '../n5kanji/n5kanji';
+import { Kanji } from '../kanji/kanji';
 
 @Component({
   selector: 'app-word-details',
@@ -11,7 +11,7 @@ export class WordDetailsComponent {
   constructor(private _location: Location) 
   {}
   
-  @Input() kanji?: N5Kanji;
+  @Input() kanji?: Kanji;
 
   backClicked() {
     this._location.back();
