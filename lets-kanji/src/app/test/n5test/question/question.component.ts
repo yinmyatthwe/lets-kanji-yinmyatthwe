@@ -2,6 +2,8 @@ import { Component,OnInit} from '@angular/core';
 import { Location } from '@angular/common';
 import { TestService } from '../../../test.service';
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
+
 export interface apiQuestionResponse{
   id: number;
   question: string;
@@ -12,19 +14,24 @@ export interface apiQuestionResponse{
   choice_4: string;
   level:string;
 }
-//export const questions:apiQuestionResponse[]; 
 @Component({
   selector: 'app-question',
   templateUrl: './question.component.html',
-  styleUrl: './question.component.css'
+  styleUrl: './question.component.css',
 })
 export class QuestionComponent {
+  //questions
   testNumber: String | null = null;
   items: any[] = [];
   questionList: any[] = [];
   filteredQuestions:any[]=[];
   questions:apiQuestionResponse[]=[]; 
-  constructor(private testService:TestService,private location:Location, private route:ActivatedRoute){}
+  answerList:any[]=[];
+  currentQuestionIndex: number = 0;
+  showMyResult:boolean | undefined;
+
+
+  constructor(private testService:TestService,private location:Location, private route:ActivatedRoute, private router:Router){}
   ngOnInit():void{
     this.testService.getTests().subscribe(
     data => {
@@ -47,14 +54,24 @@ filterItems() {
   if (this.testNumber && Array.isArray(this.items)) {
     let test=this.items.filter(item => item.id.toString()=== this.testNumber)[0];
     this.questionList = test.attributes.kanji_question_lists.data;
-    console.log(test.attributes.kanji_question_lists.data);
-    console.log(test);
-
   }
 }
 
-  
-  backClicked() {
-    this.location.back();
+score=0;
+
+nextQuestion() {
+    if (this.currentQuestionIndex < this.questionList.length - 1) {
+      this.currentQuestionIndex++;
+    }
   }
+  
+selectAnswer(userAnswer: string, id:number) {
+    let qId= this.questionList.filter(item=>item.id===id)[0];
+    if(userAnswer===qId.attributes.answer){
+      this.score++;
+    }
+}
+showResult(){
+  this.showMyResult=true;
+}
 }

@@ -11,6 +11,8 @@ import { TestComponent } from './test/test.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MainComponent } from './main/main.component';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { N5testComponent } from './test/n5test/n5test.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
@@ -19,9 +21,10 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatListModule} from '@angular/material/list';
-import { ResultComponent } from './test/result/result.component';
+import { MatSelect,MatOption} from '@angular/material/select';
 import { WordDetailsComponent } from './study/word-details/word-details.component';
 import { KanjiComponent } from './study/kanji/kanji.component';
+import { ResultComponent } from './test/result/result.component';
 
 
 @NgModule({
@@ -32,9 +35,9 @@ import { KanjiComponent } from './study/kanji/kanji.component';
     MainComponent,
     N5testComponent,
     QuestionComponent,
-    ResultComponent,
     WordDetailsComponent,
     KanjiComponent,
+    ResultComponent
   ],
   imports: [
     BrowserModule,
@@ -47,8 +50,11 @@ import { KanjiComponent } from './study/kanji/kanji.component';
     MatButtonModule,
     MatDividerModule,
     MatListModule,
-    HttpClientModule
-    
+    MatSelect,
+    MatOption,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     provideClientHydration(),
