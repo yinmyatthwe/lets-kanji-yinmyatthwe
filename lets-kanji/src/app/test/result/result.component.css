@@ -11,3 +11,6 @@
 .word_list{
     font-style: bold;
 }
+p{
+    margin: 10px 20px;
+}

@@ -1,21 +1,47 @@
-
+<div *ngIf="!showMyResult">
 <h1 style="font-weight: bold; text-align: center;">Kanji Test</h1>
 <div>
-<mat-card *ngFor="let question of questionList; let i=index;">
-    <mat-card-header>
-    <mat-card-title style="font-size: x-large; font-weight: bold;">{{i+1}}.  {{question.attributes.question}} </mat-card-title>
-    </mat-card-header>
-    <mat-card-actions> 
-    <button class="ans_btn" mat-button style="width: auto">{{question.attributes.choice_1}}</button> &nbsp;&nbsp;
-    <button class="ans_btn" mat-button style="width: auto">{{question.attributes.choice_2}}</button> &nbsp;&nbsp;
-    <button class="ans_btn" mat-button style="width: auto">{{question.attributes.choice_3}}</button> &nbsp;&nbsp;
-    <button class="ans_btn" mat-button style="width: auto">{{question.attributes.choice_4}}</button> &nbsp;&nbsp;
-    </mat-card-actions>
-    <br>
-</mat-card>
-<br><br>
-&nbsp;&nbsp;&nbsp;&nbsp;
-<button class="btn btn-primary btn-lg" (click)="backClicked()" >BACK</button>&nbsp;&nbsp;
-<button class="btn btn-primary btn-lg" routerLink="/result">Submit Answer</button>
-
+    <mat-card *ngIf="questionList && currentQuestionIndex < questionList.length">
+        <mat-card-header>
+            <mat-card-title style="font-size: x-large; font-weight: bold;">
+            Q{{currentQuestionIndex+1}} : {{questionList[currentQuestionIndex].attributes.question}}
+            </mat-card-title>
+        </mat-card-header>
+        <ul>
+            <li (click)="selectAnswer(questionList[currentQuestionIndex].attributes.choice_1,questionList[currentQuestionIndex].id)">
+                {{ questionList[currentQuestionIndex].attributes.choice_1 }}
+            </li>
+            &nbsp;&nbsp;
+            <li (click)="selectAnswer(questionList[currentQuestionIndex].attributes.choice_2,questionList[currentQuestionIndex].id)">
+                {{ questionList[currentQuestionIndex].attributes.choice_2 }}
+            </li>
+            &nbsp;&nbsp;
+            <li (click)="selectAnswer(questionList[currentQuestionIndex].attributes.choice_3,questionList[currentQuestionIndex].id)">
+                {{ questionList[currentQuestionIndex].attributes.choice_3 }}
+            </li>
+            &nbsp;&nbsp;
+            <li (click)="selectAnswer(questionList[currentQuestionIndex].attributes.choice_4,questionList[currentQuestionIndex].id)">
+                {{ questionList[currentQuestionIndex].attributes.choice_4 }}
+            </li>
+        </ul>
+        <div class="indexBtn">
+            <div class="previous">
+                <button class="btn btn-primary btn-lg" (click)=previousQuestion()><</button>
+            </div>
+            <div class="next">
+                <button class="btn btn-primary btn-lg" (click)=nextQuestion()>></button>
+            </div>
+            <div *ngIf="currentQuestionIndex==questionList.length-1" class="result">
+                <button class="btn btn-primary btn-lg" (click)=showResult()>結果</button>
+            </div>
+        </div>
+        
+        
+        <br>
+    </mat-card>
+    <br><br>
+    
 </div>
+</div>
+
+<app-result *ngIf="showMyResult" [result]="score" [questionList]="questionList"></app-result>

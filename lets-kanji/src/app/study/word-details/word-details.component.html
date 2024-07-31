@@ -1,13 +1,12 @@
-<br>
 <div *ngIf="kanji">
     <mat-card class="wordDetails">
         <mat-card-header>
-            <mat-card-title>{{kanji.kanji}}</mat-card-title>
+            <mat-card-title>{{kanji.attributes.kanji}}</mat-card-title>
         </mat-card-header>
         <mat-card-content>
-            {{kanji.onyomi}}<br>
-            {{kanji.kunyomi}}<br>
-            {{kanji.meaning}}<br>
+            {{kanji.attributes.onyomi}}<br>
+            {{kanji.attributes.kunyomi}}<br>
+            {{kanji.attributes.meaning}}<br>
 
         </mat-card-content>
         <br>

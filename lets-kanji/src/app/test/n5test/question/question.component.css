@@ -1,5 +1,31 @@
-.ans_btn{
-background-color: blanchedalmond;  
-font-size: large;
 
+ul{
+    display: flex;
+    list-style: none;
+    text-decoration: none;
 }
+ul li{
+    text-align: center;
+    width: 100px;
+    padding: 10px;
+    background-color: blanchedalmond ;
+    border-radius: 10px;
+}
+ul li:hover{
+    background-color: lightcoral;
+}
+ul li.selected {
+    background-color: lightcoral;
+}
+
+.indexBtn
+{
+    display: flex;
+    width: auto;
+}
+button{
+    margin: 10px 50px;
+    text-align: center;
+    width: 100px;
+}
+

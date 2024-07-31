@@ -17,7 +17,6 @@ interface Entry<T> {
   id: number;
   attributes: T;
 }
-
 interface Response {
   data: Entry<Kanji>[];
 }
@@ -32,21 +31,19 @@ export class KanjiComponent implements OnInit,AfterViewInit{
   items: any[] = [];
   filteredItems: any[] = [];
   constructor(private _location: Location,private http: HttpClient, private route:ActivatedRoute, private kanjiService:KanjiService) {}
-    @ViewChild(MatPaginator)
     
-    paginator!: MatPaginator;
 
   ngAfterViewInit() {
-    //this.dataSource.paginator = this.paginator;
+    this.dataSource.paginator = this.paginator;
   }
 
-  // displayedColumns: string[] = ['no', 'kanji', 'onyomi'];
-  // dataSource = new MatTableDataSource <Kanji>();
-      
+  displayedColumns: string[] = ['kanji', 'onyomi','kunyomi','meaning','level']; 
+  dataSource = new MatTableDataSource <any>();
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+
   ngOnInit(): void {
     this.kanjiService.getKanjis().subscribe(
       data => {
-        console.log('Data fetched from Strapi:', data); 
         if (Array.isArray(data)) {
           this.items = data;
           this.filterItems(); 
@@ -64,7 +61,8 @@ export class KanjiComponent implements OnInit,AfterViewInit{
   filterItems() {
     if (this.kanjiLevel && Array.isArray(this.items)) {
       this.filteredItems = this.items.filter(item => item.attributes.level=== this.kanjiLevel);
-      console.log('Filtered items:', this.filteredItems); // Debug log
+      this.dataSource.data=this.filteredItems;
+          this.dataSource.paginator=this.paginator;
     }
   }
 
@@ -73,8 +71,9 @@ export class KanjiComponent implements OnInit,AfterViewInit{
     return of();
   }
   selectedWord?: Kanji
-  getWordDetails(n5Kanji: Kanji): void {
-    this.selectedWord = n5Kanji;
+  getWordDetails(selectedKanji: Kanji): void {
+    this.selectedWord = selectedKanji;
+    console.log(selectedKanji);
   }
   
   backClicked() {

@@ -1,10 +1,11 @@
+<div>
 <br>
 <mat-card class="title_center" >
     <mat-card-header>
-    <mat-card-title class="title">ရလဒ်</mat-card-title>
+    <mat-card-title class="title">Result</mat-card-title>
     </mat-card-header>
     <br><br><br>
-    <mat-card-content style="font-size: 2em;">16/20</mat-card-content>
+    <mat-card-content style="font-size: 2em;">{{result}}/10</mat-card-content>
     <br>
 </mat-card>
 
@@ -14,22 +15,12 @@
     <mat-card-title>ことばりすと/Word List</mat-card-title>
     </mat-card-header>
     <br>
-    <mat-card-content>
-        <p>
-            Q1.　午後　（ごご） ：ည ေနခင်း<br>
-            Q2.　今晩　（こんばん）　：ဒီည<br>
-            Q3.　新聞　（しんぶん） ：သတင်းစာ<br>
-            Q4.　店　（みせ） ：ဆိုင်<br>
-            Q5.　水　（みず） ：ေ၇<br>
-            Q6.　一人　（ひとり） ：တစ် ေယာက်<br>
-            Q7.　傘　（かさ） ：ထီး<br>
-            Q8.　高い　（たかい） ：မြင့်ေသာ<br>
-            Q9.　赤い　（あかい） ：အနီေ၇ာင်<br>
-            Q10.　安い　（やすい） ：(ေစျ:)သက်သာေသာ/လွယ်ကူေသာ<br>
-        </p>
+        <mat-card *ngFor="let question of questionList,let i=index">
+        <p> Q {{i+1}}.  {{question.attributes.question}} ( {{question.attributes.answer}} )</p>
+        </mat-card>
         
-    </mat-card-content>
 </mat-card>
 <br><br>
 &nbsp;&nbsp;&nbsp;&nbsp;
 <button class="btn btn-primary" (click)="backClicked()">BACK</button>
+</div>
