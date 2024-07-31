@@ -12,11 +12,20 @@ ul li{
     border-radius: 10px;
 }
 ul li:hover{
-background-color:#f0c1f5;
+    background-color: lightcoral;
+}
+ul li.selected {
+    background-color: lightcoral;
 }
 
+.indexBtn
+{
+    display: flex;
+    width: auto;
+}
 button{
     margin: 10px 50px;
     text-align: center;
     width: 100px;
 }
+

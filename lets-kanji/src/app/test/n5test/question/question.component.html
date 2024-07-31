@@ -4,7 +4,7 @@
     <mat-card *ngIf="questionList && currentQuestionIndex < questionList.length">
         <mat-card-header>
             <mat-card-title style="font-size: x-large; font-weight: bold;">
-            Q{{currentQuestionIndex+1}} {{questionList[currentQuestionIndex].attributes.question}}
+            Q{{currentQuestionIndex+1}} : {{questionList[currentQuestionIndex].attributes.question}}
             </mat-card-title>
         </mat-card-header>
         <ul>
@@ -24,12 +24,19 @@
                 {{ questionList[currentQuestionIndex].attributes.choice_4 }}
             </li>
         </ul>
-        <div *ngIf="currentQuestionIndex<questionList.length-1">
-            <button class="btn btn-primary btn-lg" (click)="nextQuestion()">次へ</button>
+        <div class="indexBtn">
+            <div class="previous">
+                <button class="btn btn-primary btn-lg" (click)=previousQuestion()><</button>
+            </div>
+            <div class="next">
+                <button class="btn btn-primary btn-lg" (click)=nextQuestion()>></button>
+            </div>
+            <div *ngIf="currentQuestionIndex==questionList.length-1" class="result">
+                <button class="btn btn-primary btn-lg" (click)=showResult()>結果</button>
+            </div>
         </div>
-        <div *ngIf="currentQuestionIndex==questionList.length-1">
-            <button class="btn btn-primary btn-lg" (click)=showResult()>結果</button>
-        </div>
+        
+        
         <br>
     </mat-card>
     <br><br>

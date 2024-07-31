@@ -27,6 +27,7 @@ export class QuestionComponent {
   filteredQuestions:any[]=[];
   questions:apiQuestionResponse[]=[]; 
   answerList:any[]=[];
+  score=0;
   currentQuestionIndex: number = 0;
   showMyResult:boolean | undefined;
 
@@ -57,11 +58,14 @@ filterItems() {
   }
 }
 
-score=0;
-
 nextQuestion() {
     if (this.currentQuestionIndex < this.questionList.length - 1) {
       this.currentQuestionIndex++;
+    }
+  }
+previousQuestion() {
+    if (this.currentQuestionIndex >0) {
+      this.currentQuestionIndex--;
     }
   }
   
