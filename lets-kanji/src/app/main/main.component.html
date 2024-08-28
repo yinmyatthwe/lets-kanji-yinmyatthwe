@@ -1,11 +1,28 @@
 <br><br>
 <div class="container">
     <div class="row">
-        <!-- <h1>Hello</h1> -->
-    <div class="col-md-6">
-        <button type="button" class="btn btn-primary btn-lg" routerLink="/study">Study　勉強する</button>
-        <br><br><br>
-        <button type="button" class="btn btn-primary btn-lg" routerLink="/test">Test　テストを受ける</button>
-    </div>
+        <div class="col-md-9">
+            <h3 style="text-align: center;">今日も一日中頑張りましょ</h3>
+            <br>
+            <button type="button" class="btn btn-primary btn-lg" routerLink="/study">Study　勉強する</button>
+            <br><br><br>
+            <button type="button" class="btn btn-primary btn-lg" routerLink="/test">Test　テストを受ける</button>
+        </div>
+        <div *ngIf="userId" class="col-md-3">
+            <button mat-icon-button [matMenuTriggerFor]="menu">
+                <mat-icon>menu</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item routerLink="/record">
+                    <mat-icon >history</mat-icon>
+                    <span>Record</span>
+                </button>
+                <button mat-menu-item routerLink="/">
+                    <mat-icon>power_settings_new</mat-icon>
+                    <span>Log out</span>
+                </button>
+            </mat-menu>
+            
+        </div>
     </div>
 </div>

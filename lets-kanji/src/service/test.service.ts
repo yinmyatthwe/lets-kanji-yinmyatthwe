@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { questions } from './test/n5test/question/question';
-import { N5QUESTIONS } from './test/n5test/question/questionList';
+import { questions } from '../app/test/n5test/question/question';
+import { N5QUESTIONS } from '../app/test/n5test/question/questionList';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 

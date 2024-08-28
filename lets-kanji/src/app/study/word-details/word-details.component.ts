@@ -1,20 +1,33 @@
-import { Component,Input} from '@angular/core';
-import { Location } from '@angular/common';
+import { Component, Input, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-word-details',
   templateUrl: './word-details.component.html',
-  styleUrl: './word-details.component.css'
+  styleUrls: ['./word-details.component.css']
 })
 export class WordDetailsComponent {
-  constructor(private _location: Location) 
-  {}
-  
-  @Input() kanji?: any;
+  @Input() kanji: any;
+  isOpen = false;
 
-  backClicked() {
-    this._location.back();
+  openDialog(kanji: any) {
+    this.kanji = kanji;
+    this.isOpen = true;
   }
-  
 
+  closeDialog() {
+    this.isOpen = false;
+  }
+
+  @HostListener('document:keydown.escape', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) {
+    if (this.isOpen && event.key === 'Escape') {
+      this.closeDialog();
+    }
+  }
+
+  clickOutside(event: Event) {
+    if (this.isOpen && (event.target as HTMLElement).classList.contains('modal')) {
+      this.closeDialog();
+    }
+  }
 }

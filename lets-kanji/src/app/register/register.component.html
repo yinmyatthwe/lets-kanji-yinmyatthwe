@@ -1,0 +1,46 @@
+<div class="register">
+    <h2 style="text-align: center;">Create Account</h2>
+    <form (ngSubmit)="onSubmit()" [formGroup]="registerForm">
+
+        <label for="username">Username:</label>
+        <input id="username" formControlName="username">
+        <div *ngIf="registerForm.get('username')?.invalid && registerForm.get('username')?.touched">
+            <div *ngIf="registerForm.get('username')?.errors?.['required']">Username is required.</div>
+            <div *ngIf="registerForm.get('username')?.errors?.['minlength']">Username must be at least 4 characters
+                long.</div>
+        </div>
+
+        <label for="email">Email:</label>
+        <input id="email" formControlName="email">
+        <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched">
+            <div *ngIf="registerForm.get('email')?.errors?.['required']">Email is required.</div>
+            <div *ngIf="registerForm.get('email')?.errors?.['email']">Invalid email format.</div>
+        </div>
+
+        <label for="password">Password:</label>
+        <input id="password" type="password" formControlName="password">
+        <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">
+            <div *ngIf="registerForm.get('password')?.errors?.['required']">Password is required.</div>
+            <div *ngIf="registerForm.get('password')?.errors?.['minlength']">Password must be at least 6 characters
+                long.</div>
+        </div>
+
+        <label for="confirmPassword">Confirm Password:</label>
+        <input id="confirmPassword" type="password" formControlName="confirmPassword">
+        <div *ngIf="registerForm.errors?.['mismatch']">
+            Passwords do not match.
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary btn-lg">Sign up</button>
+
+        <div *ngIf="errorMessage" class="alert alert-danger mt-2">
+            {{ errorMessage }}
+        </div>
+        <br>
+        <h4>
+            Already have an account?
+            <a routerLink="/login" class="login-link">Login here</a>
+        </h4>
+    </form>
+    <!-- <p>{{ message }}</p> -->
+</div>

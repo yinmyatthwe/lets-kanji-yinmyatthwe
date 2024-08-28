@@ -4,3 +4,7 @@
 button{
     width: 300px;
 }
+input{
+    border: none;
+    border-radius: 5px;
+}

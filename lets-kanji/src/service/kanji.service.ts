@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { HttpClient,HttpErrorResponse } from '@angular/common/http';
-import { response } from 'express';
 import { map } from 'rxjs';
 export interface Kanji {
   onyomi: string;
@@ -24,9 +23,6 @@ export class KanjiService {
       map(response => response.data) // Extract the data array
     );
   }
-  // getKanjis(): Observable<any[]> {
-  //   return this.http.get<any[]>(this.apiUrl);
-  // }
 
 }
 

@@ -12,10 +12,7 @@ ul li{
     border-radius: 10px;
 }
 ul li:hover{
-    background-color: lightcoral;
-}
-ul li.selected {
-    background-color: lightcoral;
+    background-color: rgb(245, 168, 168);
 }
 
 .indexBtn
@@ -28,4 +25,17 @@ button{
     text-align: center;
     width: 100px;
 }
-
+.selected {
+    background-color: #d1ecf1; /* Light blue for selected answer */
+  }
+  
+  .correct {
+    background-color: #d4edda; /* Light green for correct answers */
+    color: #155724; /* Dark green text */
+  }
+  
+  .incorrect {
+    background-color: #f8d7da; /* Light red for incorrect answers */
+    color: #721c24; /* Dark red text */
+  }
+  

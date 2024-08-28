@@ -1,16 +1,41 @@
 .title_center {
     display: flex;
-    justify-content: center; 
-    align-items: center; 
+    justify-content: center;
+    align-items: center;
     font-style: bold;
 }
 
-.title{
+.title {
     font-size: 3em;
 }
-.word_list{
+
+.word_list {
     font-style: bold;
 }
-p{
+
+p {
     margin: 10px 20px;
+}
+
+.answer-options mat-card {
+    border-radius: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 1em;
+}
+
+.correct {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.incorrect {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.correct-answer,
+.incorrect-answer {
+    display: block;
+    font-weight: bold;
 }

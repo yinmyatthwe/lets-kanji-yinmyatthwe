@@ -35,6 +35,9 @@
       "relation": "manyToOne",
       "target": "api::test-list.test-list",
       "inversedBy": "kanji_question_lists"
+    },
+    "meaning": {
+      "type": "text"
     }
   }
 }

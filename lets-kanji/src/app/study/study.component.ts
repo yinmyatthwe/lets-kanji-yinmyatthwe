@@ -6,10 +6,12 @@ import { Location } from '@angular/common';
   styleUrl: './study.component.css'
 })
 export class StudyComponent {
-
+  userId: any;
   constructor(private _location: Location) 
   {}
-  
+  ngOnInit() {
+    this.userId = localStorage.getItem('userId');
+  }
   backClicked() {
     this._location.back();
   }

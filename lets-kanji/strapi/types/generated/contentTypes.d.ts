@@ -421,6 +421,7 @@ export interface ApiKanjiQuestionListKanjiQuestionList
       'manyToOne',
       'api::test-list.test-list'
     >;
+    meaning: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -432,6 +433,40 @@ export interface ApiKanjiQuestionListKanjiQuestionList
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::kanji-question-list.kanji-question-list',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiRecordListRecordList extends Schema.CollectionType {
+  collectionName: 'record_lists';
+  info: {
+    singularName: 'record-list';
+    pluralName: 'record-lists';
+    displayName: 'record_list';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    score: Attribute.Integer;
+    user_id: Attribute.String;
+    test_id: Attribute.String;
+    level: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::record-list.record-list',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::record-list.record-list',
       'oneToOne',
       'admin::user'
     > &
@@ -914,6 +949,7 @@ declare module '@strapi/types' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'api::kanji-list.kanji-list': ApiKanjiListKanjiList;
       'api::kanji-question-list.kanji-question-list': ApiKanjiQuestionListKanjiQuestionList;
+      'api::record-list.record-list': ApiRecordListRecordList;
       'api::test-list.test-list': ApiTestListTestList;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;

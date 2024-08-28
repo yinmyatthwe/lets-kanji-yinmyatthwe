@@ -19,12 +19,19 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { QuestionComponent } from './test/n5test/question/question.component';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
+import {MatIconModule} from '@angular/material/icon';
+import {MatMenuModule} from '@angular/material/menu';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatListModule} from '@angular/material/list';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelect,MatOption} from '@angular/material/select';
 import { WordDetailsComponent } from './study/word-details/word-details.component';
 import { KanjiComponent } from './study/kanji/kanji.component';
 import { ResultComponent } from './test/result/result.component';
+import { RecordComponent } from './record/record.component';
+import { RecordDetailsComponent } from './record-details/record-details.component';
+import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -37,7 +44,11 @@ import { ResultComponent } from './test/result/result.component';
     QuestionComponent,
     WordDetailsComponent,
     KanjiComponent,
-    ResultComponent
+    ResultComponent,
+    RecordComponent,
+    RecordDetailsComponent,
+    RegisterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -48,10 +59,13 @@ import { ResultComponent } from './test/result/result.component';
     MatPaginatorModule,
     MatCardModule,
     MatButtonModule,
+    MatIconModule,
+    MatMenuModule,
     MatDividerModule,
     MatListModule,
     MatSelect,
     MatOption,
+    MatDialogModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule
