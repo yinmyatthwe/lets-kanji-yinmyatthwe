@@ -1,4 +1,4 @@
-import { Component, Input,OnInit } from '@angular/core';
+import { Component, Input,OnInit,ViewChild,HostListener } from '@angular/core';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { RecordService } from '../../../service/record.service';
@@ -15,8 +15,10 @@ export class ResultComponent implements OnInit {
   @Input() userId: string | null = null; 
   @Input() testId: string | null = null;
   @Input() testLevel: string | null = null;
-
+  isOpen = false;
   constructor(private _location: Location, private router: Router, private recordService:RecordService) {}
+  @ViewChild('modal') modal: any; 
+
 
 
   ngOnInit() {
@@ -50,7 +52,7 @@ export class ResultComponent implements OnInit {
       this.recordService.saveResult(this.result, this.userId, this.testId,this.testLevel).subscribe(
         response => {
         console.log('Result saved successfully', response);
-        
+        this.backClicked();
       }, error => {
         console.error('Error saving result', error);
       });
@@ -60,4 +62,24 @@ export class ResultComponent implements OnInit {
     }
   }
 
+  //login user or not 
+  openDialog() {
+    this.isOpen =true;
+  }
+
+  closeDialog() {
+    this.isOpen = false;
+  }
+  @HostListener('document:keydown.escape', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) {
+    if (this.isOpen && event.key === 'Escape') {
+      this.closeDialog();
+    }
+  }
+
+  clickOutside(event: Event) {
+    if (this.isOpen && (event.target as HTMLElement).classList.contains('modal')) {
+      this.closeDialog();
+    }
+  }
 }

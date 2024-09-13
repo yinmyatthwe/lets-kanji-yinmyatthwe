@@ -28,7 +28,7 @@ export class RecordComponent implements OnInit,AfterViewInit{
     this.dataSource.paginator = this.paginator;
   }
 
-  displayedColumns: string[] = ['test','level','score'];
+  displayedColumns: string[] = ['test','level','score','date'];
   dataSource = new MatTableDataSource <any>();
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild('modal') modal: any; 

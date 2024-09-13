@@ -1,10 +1,24 @@
 .container{
     display: flex;
+    margin: 0 auto;
 }
 button{
-    width: 300px;
+    width: 100%;
+    text-align: center;
+}
+h2{
+    text-align: center;
+    font-weight: bold;
 }
 input{
     border: none;
     border-radius: 5px;
 }
+.menu{
+    width: 75%;
+}
+.mat_menu{
+    margin:0 auto;
+}
+
+

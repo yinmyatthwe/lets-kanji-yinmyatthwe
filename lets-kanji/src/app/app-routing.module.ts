@@ -12,7 +12,7 @@ import { LoginComponent } from './login/login.component';
 import path from 'path';
 
 const routes: Routes = [
-  {path:'',redirectTo:'/login',pathMatch:'full'},
+  {path:'',redirectTo:'/main',pathMatch:'full'},
   {path:'main',component:MainComponent},
   {path:'study',component:StudyComponent},
   {path:'test',component:TestComponent},

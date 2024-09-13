@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Location } from '@angular/common';
+import { UserService } from '../../service/user.service';
 
 @Component({
   selector: 'app-test',
@@ -9,12 +10,15 @@ import { Location } from '@angular/common';
 export class TestComponent {
   userId: any;
 
-  constructor(private _location: Location) 
+  constructor(private _location: Location,private userService:UserService) 
   {}
   ngOnInit() {
     this.userId = localStorage.getItem('userId');
   }
   backClicked() {
     this._location.back();
+  }
+  logout(){
+    this.userService.logout();
   }
 }

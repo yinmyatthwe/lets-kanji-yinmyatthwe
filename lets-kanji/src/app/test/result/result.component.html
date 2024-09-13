@@ -16,7 +16,7 @@
     <br>
     <mat-card *ngFor="let question of questionList; let i = index">
       <p>
-        Q {{i + 1}}: {{question.attributes.question}}
+        Q {{i + 1}}: {{question.attributes.question}} : {{question.attributes.meaning}}
       </p>
       <div class="answer-options">
         <mat-card *ngFor="let choice of [question.attributes.choice_1, question.attributes.choice_2, question.attributes.choice_3, question.attributes.choice_4]"
@@ -32,6 +32,18 @@
     <br><br>
     <button class="btn btn-primary" (click)="backClicked()">BACK</button> 
     &nbsp;&nbsp;&nbsp;
-    <button class="btn btn-primary" (click)="saveResult()">Save Result</button>
+    <button *ngIf="userId" class="btn btn-primary" (click)="saveResult()">Save Result</button>
+    <button *ngIf="!userId" class="btn btn-primary" (click)="openDialog()">Save Result</button>
+    
+    
   </mat-card-content>
-</div>
+  <div class="modal" *ngIf="isOpen" (click)="clickOutside($event)">
+    <div class="modal-content">
+    <h2>You need to login to save your result</h2>
+    <button class="btn btn-primary"  routerLink="/login" >Login</button> 
+    &nbsp;&nbsp;&nbsp;
+    <button class="btn btn-primary"  (click)="closeDialog()">Back</button>
+    </div>
+  </div>
+  
+  </div>

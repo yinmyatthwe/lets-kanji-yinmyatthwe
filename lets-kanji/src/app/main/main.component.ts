@@ -1,4 +1,5 @@
 import { Component,OnInit } from '@angular/core';
+import { UserService } from '../../service/user.service';
 
 @Component({
   selector: 'app-main',
@@ -9,6 +10,11 @@ export class MainComponent  implements OnInit{
   userId: any;
   ngOnInit() {
     this.userId = localStorage.getItem('userId');
-    console.log('User ID:', this.userId);
   }
+
+  constructor(private userService:UserService) {}
+  logout(){
+    this.userService.logout();
+  }
+
 }

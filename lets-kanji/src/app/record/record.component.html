@@ -22,6 +22,10 @@
                 <th mat-header-cell *matHeaderCellDef> Score </th>
                 <td mat-cell *matCellDef="let record" (click)="getRecordDetails(record)"> {{record.attributes.score}}/20 </td>
             </ng-container>
+            <ng-container matColumnDef="date">
+                <th mat-header-cell *matHeaderCellDef> Date </th>
+                <td mat-cell *matCellDef="let record" (click)="getRecordDetails(record)"> {{record.attributes.createdAt}}/20 </td>
+            </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
