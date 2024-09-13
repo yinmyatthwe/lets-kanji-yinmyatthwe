@@ -6,10 +6,13 @@ import { TestComponent } from './test/test.component';
 import { KanjiComponent } from './study/kanji/kanji.component';
 import { N5testComponent } from './test/n5test/n5test.component';
 import { QuestionComponent } from './test/n5test/question/question.component';
+import { RecordComponent } from './record/record.component';
+import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
 import path from 'path';
 
 const routes: Routes = [
-  {path:'',redirectTo:'main',pathMatch:'full'},
+  {path:'',redirectTo:'/main',pathMatch:'full'},
   {path:'main',component:MainComponent},
   {path:'study',component:StudyComponent},
   {path:'test',component:TestComponent},
@@ -17,7 +20,10 @@ const routes: Routes = [
   {path:'testList/:id',component:N5testComponent},
   {path:'test/:id',component:QuestionComponent},
   {path:'result',component:QuestionComponent},
-  
+  {path:'record',component:RecordComponent},
+  { path: 'register', component: RegisterComponent },
+  { path: 'login', component: LoginComponent }
+  // { path: '', redirectTo: '/login', pathMatch: 'full' }   
 ];
 
 @NgModule({

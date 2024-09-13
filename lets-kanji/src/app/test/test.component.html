@@ -1,16 +1,42 @@
-<br>
+<br><br>
 <div class="container">
-    <div class="row">
-        <div class="col-md-6">
-            <h3>Choose Your Level</h3>
+        <div class="menu">
+            <h2 style="text-align: center;">Choose Your Level</h2>
             <br>
-
             <button type="button" class="btn btn-primary btn-lg" routerLink="/testList/5">N5 Kanji Test</button>
             <br><br><br>
             <button type="button" class="btn btn-primary btn-lg" routerLink="/testList/4">N4 Kanji Test</button>
-            <br><br>
+            <br><br><br>
             <button class="btn btn-primary" (click)="backClicked()">BACK</button>
-
         </div>
-    </div>
+        <div *ngIf="!userId" class="mat_button">
+            <button mat-icon-button [matMenuTriggerFor]="menu">
+                <mat-icon>menu</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item routerLink="/register">
+                    <mat-icon>perm_identity</mat-icon>
+                    <span>Register</span>
+                </button>
+                <button mat-menu-item routerLink="/login">
+                    <mat-icon>power_settings_new</mat-icon>
+                    <span>Log In</span>
+                </button>
+            </mat-menu>
+        </div>
+        <div *ngIf="userId" class="mat_button">
+            <button mat-icon-button [matMenuTriggerFor]="menu">
+                <mat-icon>menu</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item routerLink="/record">
+                    <mat-icon >history</mat-icon>
+                    <span>Record</span>
+                </button>
+                <button mat-menu-item routerLink="/login" (click)="logout()">
+                    <mat-icon>power_settings_new</mat-icon>
+                    <span>Log out</span>
+                </button>
+            </mat-menu>
+        </div>
 </div>

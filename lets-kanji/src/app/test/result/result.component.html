@@ -1,26 +1,49 @@
 <div>
-<br>
-<mat-card class="title_center" >
+  <br>
+  <mat-card class="title_center">
     <mat-card-header>
-    <mat-card-title class="title">Result</mat-card-title>
+      <mat-card-title class="title">Result</mat-card-title>
     </mat-card-header>
     <br><br><br>
-    <mat-card-content style="font-size: 2em;">{{result}}/10</mat-card-content>
+    <mat-card-content style="font-size: 2em;">{{result}} / {{questionList?.length}}</mat-card-content>
     <br>
-</mat-card>
-
-<mat-divider></mat-divider>
-<mat-card class="word_list">
+  </mat-card>
+  <mat-divider></mat-divider>
+  <mat-card-content class="word_list">
     <mat-card-header>
-    <mat-card-title>ことばりすと/Word List</mat-card-title>
+      <mat-card-title>Answers</mat-card-title>
     </mat-card-header>
     <br>
-        <mat-card *ngFor="let question of questionList,let i=index">
-        <p> Q {{i+1}}.  {{question.attributes.question}} ( {{question.attributes.answer}} )</p>
+    <mat-card *ngFor="let question of questionList; let i = index">
+      <p>
+        Q {{i + 1}}: {{question.attributes.question}} : {{question.attributes.meaning}}
+      </p>
+      <div class="answer-options">
+        <mat-card *ngFor="let choice of [question.attributes.choice_1, question.attributes.choice_2, question.attributes.choice_3, question.attributes.choice_4]"
+                  [ngClass]="{
+                    'correct': isCorrect(choice, question.id),
+                    'incorrect': isIncorrect(choice, question.id),
+                    'selected': userAnswers[question.id] === choice
+                  }">
+          {{ choice }}
         </mat-card>
-        
-</mat-card>
-<br><br>
-&nbsp;&nbsp;&nbsp;&nbsp;
-<button class="btn btn-primary" (click)="backClicked()">BACK</button>
-</div>
+      </div>
+    </mat-card>
+    <br><br>
+    <button class="btn btn-primary" (click)="backClicked()">BACK</button> 
+    &nbsp;&nbsp;&nbsp;
+    <button *ngIf="userId" class="btn btn-primary" (click)="saveResult()">Save Result</button>
+    <button *ngIf="!userId" class="btn btn-primary" (click)="openDialog()">Save Result</button>
+    
+    
+  </mat-card-content>
+  <div class="modal" *ngIf="isOpen" (click)="clickOutside($event)">
+    <div class="modal-content">
+    <h2>You need to login to save your result</h2>
+    <button class="btn btn-primary"  routerLink="/login" >Login</button> 
+    &nbsp;&nbsp;&nbsp;
+    <button class="btn btn-primary"  (click)="closeDialog()">Back</button>
+    </div>
+  </div>
+  
+  </div>

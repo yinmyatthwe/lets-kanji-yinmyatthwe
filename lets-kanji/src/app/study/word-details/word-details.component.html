@@ -1,16 +1,16 @@
-<div *ngIf="kanji">
-    <mat-card class="wordDetails">
-        <mat-card-header>
-            <mat-card-title>{{kanji.attributes.kanji}}</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-            {{kanji.attributes.onyomi}}<br>
-            {{kanji.attributes.kunyomi}}<br>
-            {{kanji.attributes.meaning}}<br>
+<div class="modal" *ngIf="isOpen" (click)="clickOutside($event)">
+    <div class="modal-content" (click)="$event.stopPropagation()">
 
-        </mat-card-content>
-        <br>
-
-    </mat-card>
-
-</div>
+      <!-- <span class="close" (click)="closeDialog()">&times;</span> -->
+      
+      
+      <div *ngIf="kanji">
+        <h1>{{ kanji.attributes.kanji }}</h1>
+        <p>Onyomi: {{ kanji.attributes.onyomi }}</p>
+        <p>Kunyomi: {{ kanji.attributes.kunyomi }}</p>
+        <p>Meaning: {{ kanji.attributes.meaning }}</p>
+        
+      </div>
+    </div>
+  </div>
+  

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Location } from '@angular/common';
-import { TestService } from '../../test.service';
+import { TestService } from '../../../service/test.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -10,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class N5testComponent {
   testLists: any[] = [];
-  testLevel: String | null = null;
+  testLevel: any | null = null;
   filteredTests: any[] = [];
 
 
@@ -31,6 +31,7 @@ export class N5testComponent {
   );
   this.route.paramMap.subscribe(params => {
     this.testLevel = params.get('id');
+    localStorage.setItem('testLevel',this.testLevel);
     this.filterItems(); 
   });
 }

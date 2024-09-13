@@ -5,7 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { catchError, map, Observable, of } from "rxjs";
 import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
-import { KanjiService } from '../../kanji.service';
+import { KanjiService } from '../../../service/kanji.service';
 interface Kanji {
   onyomi: string;
   kanji: string;
@@ -40,13 +40,15 @@ export class KanjiComponent implements OnInit,AfterViewInit{
   displayedColumns: string[] = ['kanji', 'onyomi','kunyomi','meaning','level']; 
   dataSource = new MatTableDataSource <any>();
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-
+  @ViewChild('modal') modal: any; 
+  
   ngOnInit(): void {
     this.kanjiService.getKanjis().subscribe(
       data => {
         if (Array.isArray(data)) {
           this.items = data;
           this.filterItems(); 
+          console.log(data);
         } 
       },
       error => {
@@ -56,6 +58,7 @@ export class KanjiComponent implements OnInit,AfterViewInit{
     this.route.paramMap.subscribe(params => {
       this.kanjiLevel = params.get('id');
       this.filterItems(); 
+      
     });
   }
   filterItems() {
@@ -73,6 +76,7 @@ export class KanjiComponent implements OnInit,AfterViewInit{
   selectedWord?: Kanji
   getWordDetails(selectedKanji: Kanji): void {
     this.selectedWord = selectedKanji;
+    this.modal.openDialog(selectedKanji);
     console.log(selectedKanji);
   }
   

@@ -1,47 +1,48 @@
-<div *ngIf="!showMyResult">
-<h1 style="font-weight: bold; text-align: center;">Kanji Test</h1>
-<div>
+<div *ngIf="!showMyResult" class="main">
+  <h2>Kanji Test</h2>
+  <br>
+  <div class="nat_card">
     <mat-card *ngIf="questionList && currentQuestionIndex < questionList.length">
-        <mat-card-header>
-            <mat-card-title style="font-size: x-large; font-weight: bold;">
-            Q{{currentQuestionIndex+1}} : {{questionList[currentQuestionIndex].attributes.question}}
-            </mat-card-title>
-        </mat-card-header>
-        <ul>
-            <li (click)="selectAnswer(questionList[currentQuestionIndex].attributes.choice_1,questionList[currentQuestionIndex].id)">
-                {{ questionList[currentQuestionIndex].attributes.choice_1 }}
-            </li>
-            &nbsp;&nbsp;
-            <li (click)="selectAnswer(questionList[currentQuestionIndex].attributes.choice_2,questionList[currentQuestionIndex].id)">
-                {{ questionList[currentQuestionIndex].attributes.choice_2 }}
-            </li>
-            &nbsp;&nbsp;
-            <li (click)="selectAnswer(questionList[currentQuestionIndex].attributes.choice_3,questionList[currentQuestionIndex].id)">
-                {{ questionList[currentQuestionIndex].attributes.choice_3 }}
-            </li>
-            &nbsp;&nbsp;
-            <li (click)="selectAnswer(questionList[currentQuestionIndex].attributes.choice_4,questionList[currentQuestionIndex].id)">
-                {{ questionList[currentQuestionIndex].attributes.choice_4 }}
-            </li>
-        </ul>
-        <div class="indexBtn">
-            <div class="previous">
-                <button class="btn btn-primary btn-lg" (click)=previousQuestion()><</button>
-            </div>
-            <div class="next">
-                <button class="btn btn-primary btn-lg" (click)=nextQuestion()>></button>
-            </div>
-            <div *ngIf="currentQuestionIndex==questionList.length-1" class="result">
-                <button class="btn btn-primary btn-lg" (click)=showResult()>結果</button>
-            </div>
+      <mat-card-header>
+        <mat-card-title style="font-size: x-large; font-weight: bold;">
+          Q{{currentQuestionIndex + 1}} : {{questionList[currentQuestionIndex].attributes.question}}
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+      <ul>
+        <li
+          *ngFor="let choice of [questionList[currentQuestionIndex].attributes.choice_1, questionList[currentQuestionIndex].attributes.choice_2, questionList[currentQuestionIndex].attributes.choice_3, questionList[currentQuestionIndex].attributes.choice_4]"
+          (click)="selectAnswer(choice, questionList[currentQuestionIndex].id)" 
+          [ngClass]="{
+                'correct': choice === questionList[currentQuestionIndex].attributes.answer && selectedAnswers[questionList[currentQuestionIndex].id] === choice,
+                'incorrect': choice !== questionList[currentQuestionIndex].attributes.answer && selectedAnswers[questionList[currentQuestionIndex].id] === choice,
+                'selected': selectedAnswers[questionList[currentQuestionIndex].id] === choice
+              }">
+              
+          {{ choice }} 
+        </li>
+        &nbsp;
+      </ul>
+      </mat-card-content>
+      <mat-card-footer>
+      <div class="indexBtn">
+        <div class="previous">
+          <button class="btn btn-primary btn-lg" (click)="previousQuestion()">
+            <</button>
         </div>
-        
-        
-        <br>
+        <div class="next">
+          <button class="btn btn-primary btn-lg" (click)="nextQuestion()">></button>
+        </div>
+        <div *ngIf="currentQuestionIndex == questionList.length - 1" class="result">
+          <button class="btn btn-primary btn-lg" (click)="showResult()">結果</button>
+        </div>
+      </div>
+      </mat-card-footer>
+      <br>
     </mat-card>
     <br><br>
-    
-</div>
+  </div>
 </div>
 
-<app-result *ngIf="showMyResult" [result]="score" [questionList]="questionList"></app-result>
+<app-result *ngIf="showMyResult" [result]="score" [questionList]="questionList"
+  [userAnswers]="selectedAnswers"></app-result>
