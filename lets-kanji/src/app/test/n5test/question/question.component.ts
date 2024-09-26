@@ -45,15 +45,11 @@ export class QuestionComponent implements OnInit {
   ngOnInit(): void {
     this.testService.getTests().subscribe(
       data => {
-        console.log('Data fetched from Strapi:', data);
         if (Array.isArray(data)) {
           this.items = data;
           this.filterItems();
         }
       },
-      error => {
-        console.error('Error fetching data from Strapi:', error);
-      }
     );
 
     this.route.paramMap.subscribe(params => {

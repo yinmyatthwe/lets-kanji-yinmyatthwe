@@ -9,7 +9,7 @@ import { QuestionComponent } from './test/n5test/question/question.component';
 import { RecordComponent } from './record/record.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
-import path from 'path';
+import { UserGuideComponent } from './user-guide/user-guide.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'/main',pathMatch:'full'},
@@ -22,7 +22,8 @@ const routes: Routes = [
   {path:'result',component:QuestionComponent},
   {path:'record',component:RecordComponent},
   { path: 'register', component: RegisterComponent },
-  { path: 'login', component: LoginComponent }
+  { path: 'login', component: LoginComponent },
+  { path: 'guide', component: UserGuideComponent },
   // { path: '', redirectTo: '/login', pathMatch: 'full' }   
 ];
 

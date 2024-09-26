@@ -1,0 +1,22 @@
+.container{
+    height: 100%;
+}
+.main {
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.main h3{
+    font-style: italic;
+    font-weight: bold;
+}
+.main p{
+    font-size: medium;
+}
+.fixed-photo {
+    max-width: 100%;
+    height: auto; 
+    border: 2px solid #ccc;
+    border-radius: 8px;
+}
