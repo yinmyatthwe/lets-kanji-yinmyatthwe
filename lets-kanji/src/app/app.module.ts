@@ -32,6 +32,7 @@ import { RecordComponent } from './record/record.component';
 import { RecordDetailsComponent } from './record-details/record-details.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
+import { UserGuideComponent } from './user-guide/user-guide.component';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { LoginComponent } from './login/login.component';
     RecordComponent,
     RecordDetailsComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    UserGuideComponent
   ],
   imports: [
     BrowserModule,

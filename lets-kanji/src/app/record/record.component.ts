@@ -5,8 +5,6 @@ import {MatTableDataSource} from '@angular/material/table';
 import { RecordService } from '../../service/record.service';
 
 export interface ScoreRecord {
-  //name: string;
-  // level: number;
   score: number;
   userId:number;
 }

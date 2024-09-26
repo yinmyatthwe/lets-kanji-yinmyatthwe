@@ -22,6 +22,10 @@
                     <mat-icon>power_settings_new</mat-icon>
                     <span>Log In</span>
                 </button>
+                <button mat-menu-item routerLink="/guide">
+                    <mat-icon>book</mat-icon>
+                    <span>User Guide</span>
+                </button>
             </mat-menu>
         </div>
         <div *ngIf="userId" >
@@ -36,6 +40,10 @@
                 <button mat-menu-item routerLink="/login" (click)="logout()">
                     <mat-icon>power_settings_new</mat-icon>
                     <span>Log out</span>
+                </button>
+                <button mat-menu-item routerLink="/guide">
+                    <mat-icon>book</mat-icon>
+                    <span>User Guide</span>
                 </button>
             </mat-menu>
             

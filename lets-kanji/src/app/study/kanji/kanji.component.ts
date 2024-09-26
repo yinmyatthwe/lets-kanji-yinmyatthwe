@@ -48,7 +48,6 @@ export class KanjiComponent implements OnInit,AfterViewInit{
         if (Array.isArray(data)) {
           this.items = data;
           this.filterItems(); 
-          console.log(data);
         } 
       },
       error => {
@@ -77,7 +76,6 @@ export class KanjiComponent implements OnInit,AfterViewInit{
   getWordDetails(selectedKanji: Kanji): void {
     this.selectedWord = selectedKanji;
     this.modal.openDialog(selectedKanji);
-    console.log(selectedKanji);
   }
   
   backClicked() {
